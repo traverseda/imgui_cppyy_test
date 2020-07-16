@@ -9,7 +9,7 @@ list(INSERT CMAKE_MODULE_PATH 0 ${CPPYY_MODULE_PATH})
 find_package(Cppyy)
 
 set(SOURCES imgui/imgui.cpp imgui/imgui_demo.cpp imgui/imgui_draw.cpp imgui/imgui_widgets.cpp)
-set(HEADERS imgui/imgui.h)
+set(HEADERS imgui/imgui.h imgui/imstb_rectpack.h  imgui/imstb_truetype.h)
 
 add_library(imgui SHARED ${SOURCES})
 set_target_properties(imgui PROPERTIES POSITION_INDEPENDENT_CODE ON)
@@ -17,7 +17,7 @@ target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 cppyy_add_bindings(
    "imgui" "0.0.1" "traverseda" "traverse.da@gmail.com"
-   LANGUAGE_STANDARD "14"
+   LANGUAGE_STANDARD "17"
    GENERATE_OPTIONS "-D__PIC__;-Wno-macro-redefined"
    INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/imgui
    LINK_LIBRARIES imgui
